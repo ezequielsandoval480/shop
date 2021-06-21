@@ -1,3 +1,6 @@
+<?php 
+include "parciales/header.php";
+ ?>
 <section class="fdb-block bg-dark bg-image-over" style="background-image: url(images/bg.jpg);">
         <div class="container">
             <div class="row">

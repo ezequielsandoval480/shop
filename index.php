@@ -1,9 +1,7 @@
 <?php
 
 include 'includes/core.php';
-
-include 'parciales/header.php';
-
+ 
 //Condicional para saber que pagina cargar
 // seria misitio.com/?pagina=inicio
 if(isset($_GET['pagina'])){

@@ -25,8 +25,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <div class="ml-auto">
-                        <a class="btn btn-outline-primary ml-md-3" href="formulario.php">Ingresar</a>
-                        <a class="btn btn-outline-primary ml-md-3" href="registro.php">Registrarme</a>
+                        <a class="btn btn-outline-primary ml-md-3" href="?pagina=ingresar">Ingresar</a>
+                        <a class="btn btn-outline-primary ml-md-3" href="?pagina=registro">Registrarme</a>
                     </div>
                 </div>
             </nav>

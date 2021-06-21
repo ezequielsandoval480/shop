@@ -12,11 +12,47 @@ function buscarProducto($nombreproducto){
 function loguearUsuario($usuario,$password){
     global $db;
     $results = $db->table("user")->select()
-        ->where("usuario = :Usuario, Contraseña = :password")
+        ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' => $password
+            'password' =>md5($password)
         ))->exec();
+    if(!empty($results)){
+        $_SESSION['id']=$results[0]['id'];
+        $_SESSION['usuario'];
 
-    return $results;
+        //redirigir al inicio 
+
+    }else{
+
+    }
+  
 }
+
+function chequearUsuario($redirect=''){
+    if(isset($_SESSION['id'])){
+        return true;
+    }else{
+        if($redirect!=''){
+            header("Location" .$_SERVER['SERVER_NAME']. $redirect);
+            exit();
+        }else{
+         return false;
+        }
+    }
+}
+
+/*chequearUsuario('/?pagina=contacto');
+
+$log = chequearUsuario();
+
+if($log){
+    echo "Mi usuario esta logueado";
+}else{
+    echo "No esta logueado";
+}*/
+
+?>
+
+
+
