@@ -29,7 +29,7 @@ function loguearUsuario($usuario,$password){
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
     global $db;
-    $results = $db->table("usuarios")->insert()
+    $results = $db->table("user")->insert()
         ->where("usuario = :usuario AND password = :password AND correo = :correo AND telefono = :telefono")
         ->bind(array(
             "usuario" => $usuario,
