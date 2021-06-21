@@ -19,6 +19,12 @@
                     </a>
                 </div>
 
+                 <nav class="navbar navbar-expand-md">
+                <div class="col">
+                    <a class="navbar-brand" href="">Nombre de usuario</a>
+                </div>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
