@@ -9,22 +9,18 @@ function buscarProducto($nombreproducto){
     return $results;
 }
 
-function loguearUsuario($usuario,$password){
+function getUser($usuario,$password){
+
     global $db;
+
     $results = $db->table("user")->select()
         ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' =>md5($password)
+            'password' => $password
         ))->exec();
-    if(!empty($results)){
-        $_SESSION['id']=$results[0]['id'];
-        $_SESSION['usuario'];
-        //redirigir al inicio 
 
-    }else{
-
-    }
+    return $results;
 }
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
@@ -48,28 +44,23 @@ function registrarUsuario($usuario,$password,$correo,$telefono){
     }
 }
 
-function chequearUsuario($redirect=''){
+function estaLogueado($redirect=''){
     if(isset($_SESSION['id'])){
         return true;
-    }else{
-        if($redirect!=''){
-            header("Location" .$_SERVER['SERVER_NAME']. $redirect);
-            exit();
-        }else{
-         return false;
-        }
+    } else{
+        return false;
     }
 }
 
-/*chequearUsuario('/?pagina=contacto');
+function redirectTo($to = ''){
+    $protocol = 'http://';
+    $domainName = $_SERVER['HTTP_HOST'].'/';
+    $base =  $protocol.$domainName;
 
-$log = chequearUsuario();
+    header("Location: " .$base . $to);
+    exit();
+}
 
-if($log){
-    echo "Mi usuario esta logueado";
-}else{
-    echo "No esta logueado";
-}*/
 
 ?>
 
