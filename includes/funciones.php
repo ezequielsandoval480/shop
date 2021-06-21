@@ -20,13 +20,32 @@ function loguearUsuario($usuario,$password){
     if(!empty($results)){
         $_SESSION['id']=$results[0]['id'];
         $_SESSION['usuario'];
-
         //redirigir al inicio 
 
     }else{
 
     }
-  
+}
+
+function registrarUsuario($usuario,$password,$correo,$telefono){
+    global $db;
+    $results = $db->table("usuarios")->insert()
+        ->where("usuario = :usuario AND password = :password AND correo = :correo AND telefono = :telefono")
+        ->bind(array(
+            "usuario" => $usuario,
+            'password' =>md5($password),
+            "correo" => $correo,
+            "telefono" => $telefono
+        ))->exec();
+    if(!empty($results)){
+        $_SESSION['id']=$results[0]['id'];
+        $_SESSION['usuario'];
+
+   //redirigir al inicio 
+
+    }else{
+
+    }
 }
 
 function chequearUsuario($redirect=''){
