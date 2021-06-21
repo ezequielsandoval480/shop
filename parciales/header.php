@@ -19,21 +19,32 @@
                     </a>
                 </div>
 
-                 <nav class="navbar navbar-expand-md">
-                <div class="col">
-                    <a class="navbar-brand" href="">Nombre de usuario</a>
-                </div>
-
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav1">
-                    <div class="ml-auto">
-                        <a class="btn btn-outline-primary ml-md-3" href="?pagina=ingresar">Ingresar</a>
-                        <a class="btn btn-outline-primary ml-md-3" href="?pagina=registro">Registrarme</a>
-                    </div>
+                    <?php if(estaLogueado()) :?>
+                        <div class="ml-auto">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bcbcbc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+                                    <?php echo $_SESSION['usuario'];?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Mi cuenta</a>
+                                <a class="dropdown-item" href="#">Mis compras</a>
+                                <a class="dropdown-item" href="/?pagina=salir">Salir de mi sesión</a>
+                                </div>
+                            </div>                            
+                        </div>
+                    <?php else :?>
+                    
+                        <div class="ml-auto">
+                            <a class="btn btn-outline-primary ml-md-3" href="?pagina=ingresar">Ingresar</a>
+                            <a class="btn btn-outline-primary ml-md-3" href="?pagina=registro">Registrarme</a>
+                        </div>
+                    <?php endif;?>
                 </div>
             </nav>
         </div>
