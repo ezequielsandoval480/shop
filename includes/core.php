@@ -3,14 +3,13 @@
 session_start();
 
 $db_conf = array(
-    "HOST" => "127.0.0.1",
+    "HOST" => "localhost",
     "NAME" => "shop",
     "USER" => "root",
     "PWD" => "",
     "PORT" => "3306",
     "PREFIX" => ""
 );
-
 
 include "db.php";
 $db= db_helper($db_conf);

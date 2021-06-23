@@ -70,7 +70,7 @@ class MysqlHelper
 		return $this;
 	}
 	
-	function insert($item)
+	function insert($item = "*")
 	{
 		$this->mode_ = "INSERT";
 		$this->item_ = $item;

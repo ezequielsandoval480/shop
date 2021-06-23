@@ -9,19 +9,21 @@ function buscarProducto($nombreproducto){
     return $results;
 }
 
-function getUser($usuario,$password){
 
+function getUser($usuario,$password){
+    
     global $db;
 
     $results = $db->table("user")->select()
         ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' => $password
+            'password' =>$password
         ))->exec();
 
-    return $results;
-}
+return $results;
+ }
+
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
     global $db;
@@ -29,9 +31,9 @@ function registrarUsuario($usuario,$password,$correo,$telefono){
         ->where("usuario = :usuario AND password = :password AND correo = :correo AND telefono = :telefono")
         ->bind(array(
             "usuario" => $usuario,
-            'password' =>md5($password),
+            'password' =>$password,
             "correo" => $correo,
-            "telefono" => $telefono
+            "telefono" =>$telefono
         ))->exec();
     if(!empty($results)){
         $_SESSION['id']=$results[0]['id'];
@@ -44,15 +46,15 @@ function registrarUsuario($usuario,$password,$correo,$telefono){
     }
 }
 
-function estaLogueado($redirect=''){
+function estaLogueado ($redirect=''){
     if(isset($_SESSION['id'])){
         return true;
-    } else{
-        return false;
+    }else{
+         return false;
+        }
     }
-}
 
-function redirectTo($to = ''){
+function redirectTo($to=''){
     $protocol = 'http://';
     $domainName = $_SERVER['HTTP_HOST'].'/';
     $base =  $protocol.$domainName;

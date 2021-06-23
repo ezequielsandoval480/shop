@@ -19,11 +19,13 @@
                     </a>
                 </div>
 
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav1">
+
                     <?php if(estaLogueado()) :?>
                         <div class="ml-auto">
                             <div class="nav-item dropdown">
@@ -34,17 +36,18 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Mi cuenta</a>
                                 <a class="dropdown-item" href="#">Mis compras</a>
-                                <a class="dropdown-item" href="/?pagina=salir">Salir de mi sesión</a>
+                                <a class="dropdown-item" href="?pagina=salir">Salir de mi sesión</a>
                                 </div>
                             </div>                            
                         </div>
                     <?php else :?>
-                    
+
                         <div class="ml-auto">
                             <a class="btn btn-outline-primary ml-md-3" href="?pagina=ingresar">Ingresar</a>
                             <a class="btn btn-outline-primary ml-md-3" href="?pagina=registro">Registrarme</a>
                         </div>
                     <?php endif;?>
+
                 </div>
             </nav>
         </div>
@@ -65,7 +68,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown08">
-                        <a class="dropdown-item" href="#">Marcas</a>
+                        <a class="dropdown-item" href="#">Marcas</a> 
+                        <?php
+
+
+
+                         ?>
+
+
                         </div>
                     </li>
                      <li class="nav-item">

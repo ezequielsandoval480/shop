@@ -87,7 +87,6 @@ include "parciales/header.php";
    
     </section>
 
-    
 
     <section class="fdb-block">
        <div class="row text-center">

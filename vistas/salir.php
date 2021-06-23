@@ -2,6 +2,6 @@
 
 session_destroy();
 
-redirectTo('');
+redirectTo('/?pagina=inicio');
 
-?>
+?> 
