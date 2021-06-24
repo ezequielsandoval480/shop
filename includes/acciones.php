@@ -19,16 +19,14 @@ if(isset($_POST['action']) &&  $_POST['action']=='loguear_usuario'){
 
 }
 
-if(isset($_POST['action']) &&  $_POST['action'] &&  $_POST['action']  &&  $_POST['action']=='registrarUsuario'){
+if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
 
     $resultados = registrarUsuario($_POST['usuario'],$_POST['password'],$_POST['correo'], $_POST['telefono']);
 
     if(!empty($resultados)){
-        $_SESSION['id'] = $resultados[0]['id'];
-        $_SESSION['usuario'] = $resultados[0]['usuario'];
-        redirectTo('?pagina=inicio');
+        $mensaje = 'Usuario creado';
     } else{
         $mensaje = 'No se ha encontrado el usuario';
-     }
+    }
 
  }

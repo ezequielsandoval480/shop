@@ -26,24 +26,19 @@ return $results;
 
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
+    
     global $db;
-    $results = $db->table("user")->insert()
-        ->where("usuario = :usuario AND password = :password AND correo = :correo AND telefono = :telefono")
-        ->bind(array(
-            "usuario" => $usuario,
-            'password' =>$password,
-            "correo" => $correo,
-            "telefono" =>$telefono
-        ))->exec();
-    if(!empty($results)){
-        $_SESSION['id']=$results[0]['id'];
-        $_SESSION['usuario'];
+    
+    $results = $db->table("user")->insert("(`usuario`,`password`,`correo`,`telefono`)")
+    ->values("(:usuario,:password,:correo,:telefono)")
+    ->bind(array(
+        "usuario" => $usuario,
+        'password' =>$password,
+        "correo" => $correo,
+        "telefono" =>$telefono
+    ))->exec();
 
-   //redirigir al inicio 
-
-    }else{
-
-    }
+    return $results;
 }
 
 function estaLogueado ($redirect=''){

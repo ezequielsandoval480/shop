@@ -174,6 +174,7 @@ class MysqlHelper
 				{
 					$query->execute();
 				}
+                return $this->pdo_->lastInsertId();
 			}
 			catch (PDOException $e)
 			{
