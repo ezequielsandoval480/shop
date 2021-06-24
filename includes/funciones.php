@@ -18,7 +18,7 @@ function getUser($usuario,$password){
         ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' =>$password
+            'password' => sha1($password)
         ))->exec();
 
 return $results;
@@ -33,7 +33,7 @@ function registrarUsuario($usuario,$password,$correo,$telefono){
     ->values("(:usuario,:password,:correo,:telefono)")
     ->bind(array(
         "usuario" => $usuario,
-        'password' =>$password,
+        'password' => sha1($password),
         "correo" => $correo,
         "telefono" =>$telefono
     ))->exec();
