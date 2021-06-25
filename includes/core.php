@@ -15,7 +15,6 @@ include "db.php";
 $db= db_helper($db_conf);
 
 
-
 include "funciones.php";
 include "acciones.php";
 ?>
