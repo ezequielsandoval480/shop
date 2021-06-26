@@ -30,4 +30,16 @@ if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
         $mensaje = 'No se ha encontrado el usuario';
     }
 
- }
+}
+
+if(isset($_POST['action']) &&  $_POST['action'] == 'actualizar_usuario'){
+
+    $resultados = updateUser($_POST);
+
+    if($resultados && $resultados > 0){
+        $mensaje = 'Usuario actualizado';
+    } else{
+        $mensaje = 'Ocurrio un problema al actualizar';
+    }
+
+}

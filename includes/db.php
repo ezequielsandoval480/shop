@@ -206,6 +206,7 @@ class MysqlHelper
 				{
 					$query->execute();
 				}
+                return $query->rowCount();
 			}
 			catch (PDOException $e)
 			{

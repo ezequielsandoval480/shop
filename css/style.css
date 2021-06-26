@@ -1,10 +1,38 @@
 body {
 }
 
+.mensaje-central {
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	min-width: 340px;
+	z-index: 10;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 .bg-dark {
 	background-color: #01454f !important;
 }
 
+.btn-primary {
+	background: #0f596f;
+	border-color: #0f596f;
+}
+
+.btn-primary:hover {
+	border-color: #0f596f;
+	background: #17647c;
+}
+
+.btn-outline-primary {
+	border-color: #0f596f;
+	color: #0f596f;
+}
+
+.btn-outline-primary:hover {
+	border-color: #0f596f;
+	background: #17647c;
+}
 
 .bg-image-over {
 	position: relative;
@@ -22,12 +50,8 @@ body {
 	z-index: 1;
 }
 
-
-
-
-
 .bg-image-over .container {
 	position: relative;
-	animation:bg-image-over 10s infinite;
+	animation: bg-image-over 10s infinite;
 	z-index: 2;
 }

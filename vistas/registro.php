@@ -11,10 +11,6 @@ include "parciales/header.php";
 	 <div class="container">
 	 	<div class="row">
 			 <div class="col-md-8 mx-auto">
-
-	 	<?php if(isset($mensaje)) :?>
-                <div class="alert alert-warning"><?php echo $mensaje;?></div>
-            <?php endif;?>
 	             <form id="registro"  method="post">
 	             	<div class="form">
 			      <h3 class="mb4">Crea tu cuenta</h3>  

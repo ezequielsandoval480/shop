@@ -10,11 +10,7 @@ include "parciales/header.php";
 <section class="fdb-block bg-dark bg-image-over">
 	<div class="container">
 		<div class="row">
-			 <div class="col-md-8 mx-auto">
-
-			 	<?php if(isset($mensaje)) :?>
-                <div class="alert alert-warning"><?php echo $mensaje;?></div>
-            <?php endif;?>
+			<div class="col-md-8 mx-auto">
 
 		   <form id="Iniciar" method="post">
 		 	  <div class="form">

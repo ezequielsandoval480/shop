@@ -21,8 +21,24 @@ function getUser($usuario,$password){
             'password' => sha1($password)
         ))->exec();
 
-return $results;
+    return $results;
  }
+
+function getUserById($id){
+
+    global $db;
+
+    $results = $db->table("user")->select('id,usuario,correo,telefono')
+        ->where("id = :id")
+        ->bind(array(
+            "id" => $id,
+        ))->exec();
+    if(!empty($results)){
+        return $results[0];
+    } else {
+        return false;
+    }
+}
 
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
@@ -39,6 +55,32 @@ function registrarUsuario($usuario,$password,$correo,$telefono){
     ))->exec();
 
     return $results;
+}
+
+function updateUser($data){
+    global $db;
+
+    if(isset($data['password']) && $data['password'] != ''){
+        $results = $db->table("user")->update("telefono = :telefono, correo = :correo, password = :password")->where("id = :id")
+        ->bind(array(
+            "telefono" => $data['telefono'],
+            "correo" => $data['correo'],
+            "password" => sha1($data['password']),
+            "id" => $_SESSION['id'],
+        ))->exec();
+    } else {
+        $results = $db->table("user")->update("telefono = :telefono, correo = :correo")->where("id = :id")
+        ->bind(array(
+            "telefono" => $data['telefono'],
+            "correo" => $data['correo'],
+            "id" => $_SESSION['id'],
+        ))->exec();
+    }
+
+    return $results;
+
+    // update tbl_list where id = $id
+    
 }
 
 function estaLogueado ($redirect=''){

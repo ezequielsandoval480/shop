@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <?php if(isset($mensaje)) :?>
+        <div class="mensaje-central alert alert-warning"><?php echo $mensaje;?></div>
+    <?php endif;?>
+
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-md">
@@ -34,7 +38,7 @@
                                     <?php echo $_SESSION['usuario'];?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Mi cuenta</a>
+                                <a class="dropdown-item" href="?pagina=cuenta">Mi cuenta</a>
                                 <a class="dropdown-item" href="#">Mis compras</a>
                                 <a class="dropdown-item" href="?pagina=salir">Salir de mi sesión</a>
                                 </div>
