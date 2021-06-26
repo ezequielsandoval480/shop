@@ -1,6 +1,7 @@
 <?php
 
 //implementation
+//https://github.com/clamcy/PDO-MySQL-Helper
 
 function db_helper($conf)
 {
@@ -174,6 +175,7 @@ class MysqlHelper
 				{
 					$query->execute();
 				}
+                return $this->pdo_->lastInsertId();
 			}
 			catch (PDOException $e)
 			{

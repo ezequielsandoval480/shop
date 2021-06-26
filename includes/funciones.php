@@ -18,23 +18,7 @@ function getUser($usuario,$password){
         ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' =>$password
-        ))->exec();
-
-return $results;
- }
-
- 
-
-function getUserRegistrado($usuario,$password){
-    
-    global $db;
-
-    $results = $db->table("user")->select()
-        ->where("usuario = :usuario AND password = :password")
-        ->bind(array(
-            "usuario" => $usuario,
-            'password' =>$password
+            'password' => sha1($password)
         ))->exec();
 
 return $results;
@@ -44,19 +28,18 @@ return $results;
 function registrarUsuario($usuario,$password,$correo,$telefono){
     
     global $db;
-
+    
     $results = $db->table("user")->insert("(`usuario`,`password`,`correo`,`telefono`)")
-        ->values("(:usuario,:password,:correo,:telefono)")
-        ->bind(array(
-            "usuario" => $usuario,
-            'password' => sha1($password),
-            "correo" => $correo,
-            "telefono" =>$telefono
-        ))->exec();
+    ->values("(:usuario,:password,:correo,:telefono)")
+    ->bind(array(
+        "usuario" => $usuario,
+        'password' => sha1($password),
+        "correo" => $correo,
+        "telefono" =>$telefono
+    ))->exec();
 
-return $results;
+    return $results;
 }
-
 
 function estaLogueado ($redirect=''){
     if(isset($_SESSION['id'])){
