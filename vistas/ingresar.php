@@ -10,7 +10,7 @@ include "parciales/header.php";
 <section class="fdb-block bg-dark bg-image-over">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 mx-auto">
+			 <div class="col-md-8 mx-auto">
 
 		   <form id="Iniciar" method="post">
 		 	  <div class="form">

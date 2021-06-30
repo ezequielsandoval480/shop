@@ -13,7 +13,6 @@
     <?php if(isset($mensaje)) :?>
         <div class="mensaje-central alert alert-warning"><?php echo $mensaje;?></div>
     <?php endif;?>
-
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-md">
@@ -38,8 +37,8 @@
                                     <?php echo $_SESSION['usuario'];?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="?pagina=cuenta">Mi cuenta</a>
-                                <a class="dropdown-item" href="#">Mis compras</a>
+                                 <a class="dropdown-item" href="?pagina=cuenta">Mi cuenta</a>
+                                <a class="dropdown-item" href="">Mis compras</a>
                                 <a class="dropdown-item" href="?pagina=salir">Salir de mi sesión</a>
                                 </div>
                             </div>                            
@@ -72,13 +71,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown08">
-                        <a class="dropdown-item" href="#">Marcas</a> 
-                        <?php
-
-
-
-                         ?>
-
+                        <a class="dropdown-item" href="?pagina=marcas">Marcas</a> 
+                    
 
                         </div>
                     </li>
