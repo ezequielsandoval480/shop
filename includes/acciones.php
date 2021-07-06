@@ -15,24 +15,26 @@ if(isset($_POST['action']) &&  $_POST['action']=='loguear_usuario'){
     }
 
     //aca si es exitoso lo guardas en la sesion
-
 }
+
 
 if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
 
-    $resultados = registrarUsuario($_POST['usuario'],$_POST['password'],$_POST['correo'], $_POST['telefono']);
+     $resultados = registrarUsuario($_POST['usuario'],$_POST['password'],$_POST['correo'], $_POST['telefono']);
 
-    if(!empty($resultados) && intval($resultados)){
+    $resultados = getUser($_POST['usuario'],$_POST['password']);
+
+      if(!empty($resultados) && intval($resultados)){
         $_SESSION['id'] = $resultados;
         $_SESSION['usuario'] = $_POST['usuario'];
         $mensaje = 'Usuario creado';
     } else{
-        $mensaje = 'No se ha encontrado el usuario';
+         $mensaje = 'No se ha encontrado el usuario';
     }
 
-}
+ }
 
-if(isset($_POST['action']) &&  $_POST['action'] == 'actualizar_usuario'){
+ if(isset($_POST['action']) &&  $_POST['action'] == 'actualizar_usuario'){
 
     $resultados = updateUser($_POST);
 
@@ -43,3 +45,18 @@ if(isset($_POST['action']) &&  $_POST['action'] == 'actualizar_usuario'){
     }
 
 }
+
+
+ if(isset($_POST['action']) &&  $_POST['action']  =='registrarCompras'){
+
+    $resultados = registrarCompras($_POST['id'],$_POST['idproducto'],$_POST['preciounitario'],$_POST['Cantidad'],$_POST['fecha']);
+
+    if($resultados > 0){
+        $mensaje = 'Se obtuvieron los resultados del registro';
+        redirectTo('?pagina=compras');
+    } else{
+        $mensaje = 'Ocurrio un problema al obtener el resultado del registro';
+    }
+
+}
+

@@ -2,7 +2,6 @@
 
 //implementation
 //https://github.com/clamcy/PDO-MySQL-Helper
-
 function db_helper($conf)
 {
 	return new MysqlHelper($conf);
@@ -175,16 +174,19 @@ class MysqlHelper
 				{
 					$query->execute();
 				}
-                return $this->pdo_->lastInsertId();
+			
+			    return $this->pdo_->lastInsertId();
 			}
-			catch (PDOException $e)
-			{
+
+			  catch (PDOException $e)
+			  {
+
 				if ($this->transaction_mode_)
 				{
 					$this->pdo_->rollBack();
 				}
 				echo("DATABASE ERROR .".$e->getMessage());
-			}
+			  }
 		}
 		else if ($this->mode_ == "UPDATE")
 		{
@@ -204,9 +206,11 @@ class MysqlHelper
 				}
 				else
 				{
+
 					$query->execute();
+
 				}
-                return $query->rowCount();
+				return $query->rowCount();
 			}
 			catch (PDOException $e)
 			{
@@ -247,8 +251,9 @@ class MysqlHelper
 		{
 			die("unexpected DATABASE ACCESS MODE.\n");
 		}
-	}
 	
+
+}	
 	private $conf_;
 	private $pdo_;
 	private $table_;

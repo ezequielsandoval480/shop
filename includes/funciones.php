@@ -1,14 +1,5 @@
 <?php
-
 //tenes que hacer las funciones asi
-function buscarProducto($nombreproducto){
-    global $db;
-    $results = $db->table("productos")->select()
-    ->where("nombre = :nombre")->bind(array("nombre" => $nombreproducto))->exec();
-
-    return $results;
-}
-
 
 function getUser($usuario,$password){
     
@@ -18,13 +9,13 @@ function getUser($usuario,$password){
         ->where("usuario = :usuario AND password = :password")
         ->bind(array(
             "usuario" => $usuario,
-            'password' => sha1($password)
+            'password' =>sha1($password)
         ))->exec();
 
-    return $results;
+return $results;
  }
 
-function getUserById($id){
+ function getUserById($id){
 
     global $db;
 
@@ -40,22 +31,79 @@ function getUserById($id){
     }
 }
 
+ function getMarcas(){
+
+    global $db;
+
+    //selecciono las marcas de productos
+
+    $results = $db->table("marcas")->select()
+      ->exec();
+    if(!empty($results)){
+        return $results;
+   } else {
+        return false;
+    }
+}
+
+
+ function getProductosbyMarca($marca =""){
+
+    global $db;
+
+    //extraer data de producto
+
+    $results = $db->table("comprass")->select()
+        ->where("marca = :marca")
+        ->bind(array(
+            "marca" => $marca
+        ))->exec();
+    if(!empty($results)){
+        return $results;
+    } else {
+        return false;
+    }
+}
+
+
+
+ function registrarCompras($id,$idproducto,$preciounitario,$Cantidad,$fecha){
+
+    global $db;
+
+    //venta completa id, usuario, productos, total, fecha
+
+ $results = $db->table("DetalleVenta")->insert("(`id`,`idproducto`,`preciounitario`,`Cantidad`,`fecha`)")
+        ->values("(:id,:nombre,:precio,:Cantidad,:fecha)")
+        ->bind(array(
+            "id" => $id,
+            "idproducto"  => $idproducto,
+            "preciounitario" => $preciounitario,
+            "1" => $Cantidad,
+            "01/07/2021" => $fecha
+        ))->exec();
+
+return $results;
+    //registro individual del producto con su valor individual cantidad,precio usuario y fecha, id de venta
+
+}
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
     
     global $db;
-    
-    $results = $db->table("user")->insert("(`usuario`,`password`,`correo`,`telefono`)")
-    ->values("(:usuario,:password,:correo,:telefono)")
-    ->bind(array(
-        "usuario" => $usuario,
-        'password' => sha1($password),
-        "correo" => $correo,
-        "telefono" =>$telefono
-    ))->exec();
 
-    return $results;
+    $results = $db->table("user")->insert("(`usuario`,`password`,`correo`,`telefono`)")
+        ->values("(:usuario,:password,:correo,:telefono)")
+        ->bind(array(
+            "usuario" => $usuario,
+            'password' => sha1($password),
+            "correo" => $correo,
+            "telefono" =>$telefono
+        ))->exec();
+
+return $results;
 }
+
 
 function updateUser($data){
     global $db;
@@ -82,7 +130,6 @@ function updateUser($data){
     // update tbl_list where id = $id
     
 }
-
 function estaLogueado ($redirect=''){
     if(isset($_SESSION['id'])){
         return true;
@@ -99,6 +146,9 @@ function redirectTo($to=''){
     header("Location: " .$base . $to);
     exit();
 }
+
+
+
 
 
 ?>

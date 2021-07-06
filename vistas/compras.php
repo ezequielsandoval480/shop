@@ -5,13 +5,9 @@ if(!estaLogueado()){
    redirectTo('?pagina=inicio');
 }
 
-
-$productos= getProductosbyMarca($_GET['id']);
-
-
+$productos= getProductosbyMarca($_GET['id']); 
 
 include "parciales/header.php";
-include "parciales/footer.php";
 ?>
 
  <section class="fdb-block py-5">
@@ -27,21 +23,10 @@ include "parciales/footer.php";
                             <img class="w-100"
                             src="./images/<?php echo $producto['imagen'];?>">
                                 <h3><?php echo $producto['nombre']?></h3>
-                                <h3>Precio:$<?php echo $producto['precio']?></h3>
-                                <h3>Cantidad</h3>
                             </div>
-                                <form id="AgregaralCarrito" method="post">
-                                    
-                                    <input type="text" name="id" id="id" value="<?php echo $producto['id'];?>">
-                                     <input type="text" name="idproducto" id="idproducto" "value="<?php echo $producto['nombre'];?>">
-                                     <input type="text" name="preciounitario" id="precio" value="<?php echo $producto['precio'];?>">
-                                    <input type="number" name="Cantidad" id="Cantidad" value="1">
-                                    <input type="hidden" name="fecha" id="fecha" value="1">
-                                      <input type="hidden" name="action" href="?pagina=compras" value="registrarCompras">
+                                <form action="">
+                                    <input type="hidden" name="action" href="" value="registrarCompras">
                                     <button type="submit" class="btn btn-primary">Agregar a carrito</button>
-                                    
-
-
                                 </form>
                             </div>
                         </div>

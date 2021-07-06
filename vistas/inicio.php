@@ -23,6 +23,8 @@ include "parciales/header.php";
         </div>
     </section>
 
+
+
     <section class="fdb-block" style="background-image: linear-gradient(-225deg, #9c9c9c 0%, #D7FFFE 100%);">
        <div class="row text-center">
                 <div class="col-12">
