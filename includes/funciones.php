@@ -22,7 +22,7 @@ return $results;
     $results = $db->table("user")->select('id,usuario,correo,telefono')
         ->where("id = :id")
         ->bind(array(
-            "id" => $id,
+            "id" => $id
         ))->exec();
     if(!empty($results)){
         return $results[0];
@@ -67,26 +67,52 @@ return $results;
 
 
 
- function registrarCompras($id,$idproducto,$preciounitario,$Cantidad,$fecha){
+ function registrarCompras($idproducto,$nombre,$preciounitario,$Cantidad){
 
     global $db;
 
     //venta completa id, usuario, productos, total, fecha
-
- $results = $db->table("DetalleVenta")->insert("(`id`,`idproducto`,`preciounitario`,`Cantidad`,`fecha`)")
-        ->values("(:id,:nombre,:precio,:Cantidad,:fecha)")
-        ->bind(array(
-            "id" => $id,
-            "idproducto"  => $idproducto,
+ $results = $db->table("DetalleVenta")->insert("(`idProducto`,`nombre`,`preciounitario`,`Cantidad`)") ->values("(:idProducto,:nombre,:preciounitario,:Cantidad)")
+        ->bind(array( 
+            "idProducto"  => $idproducto,
+            "nombre"  => $nombre,
             "preciounitario" => $preciounitario,
-            "1" => $Cantidad,
-            "01/07/2021" => $fecha
+            "Cantidad" => $Cantidad
         ))->exec();
 
 return $results;
-    //registro individual del producto con su valor individual cantidad,precio usuario y fecha, id de venta
-
 }
+
+
+function getCompras($idproducto){
+     global $db;
+
+    //venta completa id, usuario, productos, total, fecha
+ $results = $db->table("DetalleVenta")->select()
+  ->exec();
+ if(!empty($results)){
+        return $results;
+    } else {
+        return false;
+    }
+}
+
+function eliminar($id){
+     global $db;
+
+    //venta completa id, usuario, productos, total, fecha
+ $results = $db->table("DetalleVenta")->delete()
+     ->where("idProducto = :idProducto")
+        ->bind(array(
+            "idProducto" => $id
+    ))->exec();
+ if(!empty($results)){
+        return $results;
+    } else {
+        return false;
+    }
+}
+
 
 function registrarUsuario($usuario,$password,$correo,$telefono){
     
@@ -152,6 +178,5 @@ function redirectTo($to=''){
 
 
 ?>
-
 
 
