@@ -46,7 +46,6 @@ if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
 
 }
 
-
  if(isset($_POST['action']) &&  $_POST['action']  =='registrarCompras'){
 
     $resultados = registrarCompras($_POST['idProducto'],$_POST['nombre'],$_POST['preciounitario'],$_POST['Cantidad']);
@@ -60,15 +59,14 @@ if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
 }
 
 
- if(isset($_POST['action']) =='eliminar'){
+ if(isset($_GET['action']) &&  $_GET['action']  =='eliminar'){
 
-    $resultados = eliminar($_POST['id']);
-
-    if($resultados > 0){
-        $mensaje = 'Se obtuvieron los resultados del registro';
-        redirectTo('?pagina=compras');
+    $resultados = eliminar($_GET['idProducto'],$_GET['nombre'],$_GET['preciounitario'],$_GET['Cantidad']);
+ 
+    if($resultados > 0 ){
+        $mensaje = 'Se elimino la compra correctamente';
     } else{
-        $mensaje = 'Ocurrio un problema al obtener el resultado del registro';
+        $mensaje = 'Ocurrio un problema al eliminar la compra';
     }
 
 }
