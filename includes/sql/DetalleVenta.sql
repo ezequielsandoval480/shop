@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-07-2021 a las 19:30:51
+-- Tiempo de generación: 19-07-2021 a las 19:56:35
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.32
 
@@ -28,18 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `DetalleVenta` (
+  `id` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
   `nombre` text NOT NULL,
   `preciounitario` decimal(20,2) NOT NULL,
-  `Cantidad` int(11) NOT NULL
+  `Cantidad` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `DetalleVenta`
---
-
-INSERT INTO `DetalleVenta` (`idProducto`, `nombre`, `preciounitario`, `Cantidad`) VALUES
-(13, '', '3000.00', 1);
 
 --
 -- Índices para tablas volcadas
@@ -49,7 +44,7 @@ INSERT INTO `DetalleVenta` (`idProducto`, `nombre`, `preciounitario`, `Cantidad`
 -- Indices de la tabla `DetalleVenta`
 --
 ALTER TABLE `DetalleVenta`
-  ADD PRIMARY KEY (`idProducto`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -59,7 +54,7 @@ ALTER TABLE `DetalleVenta`
 -- AUTO_INCREMENT de la tabla `DetalleVenta`
 --
 ALTER TABLE `DetalleVenta`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
