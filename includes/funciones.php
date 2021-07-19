@@ -67,21 +67,22 @@ return $results;
 
 
 
- function registrarCompras($idproducto,$nombre,$preciounitario,$Cantidad){
+ function registrarCompras($datosplanos,$Cantidad){
 
     global $db;
 
     //venta completa id, usuario, productos, total, fecha
  $results = $db->table("DetalleVenta")->insert("(`idProducto`,`nombre`,`preciounitario`,`Cantidad`)") ->values("(:idProducto,:nombre,:preciounitario,:Cantidad)")
         ->bind(array( 
-            "idProducto"  => $idproducto,
-            "nombre"  => $nombre,
-            "preciounitario" => $preciounitario,
+            "idProducto"  => $datosplanos,
+            "nombre"  => $datosplanos,
+            "preciounitario" => $datosplanos,
             "Cantidad" => $Cantidad
         ))->exec();
 
 return $results;
 }
+
 
 
 function getCompras($idproducto){
