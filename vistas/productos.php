@@ -42,6 +42,7 @@ include "parciales/header.php";
                                     <input type="hidden" name="idProducto" id="id" value="<?php echo $datosplanos['id'];?>">
                                      <input type="hidden" name="nombre" id="nombre" "value="<?php echo $datosplanos['nombre'];?>">
                                      <input type="hidden" name="preciounitario" id="precio" value="<?php echo $datosplanos['precio'];?>">
+                                     <input type="hidden" name="datos" id="datos" value="<?php echo $datosplanos;?>">
                                     <input type="number" name="Cantidad" id="Cantidad" value="1">
                                     <input type="hidden" name="fecha" id="fecha">
                                      <input type="hidden" name="usuarioid" id="usuarioid" value="<?php echo $producto['precio'];?>">

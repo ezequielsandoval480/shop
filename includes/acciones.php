@@ -48,7 +48,7 @@ if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
 
  if(isset($_POST['action']) &&  $_POST['action']  =='registrarCompras'){
 
-    $resultados = registrarCompras($_POST['idProducto'],$_POST['nombre'],$_POST['preciounitario'],$_POST['Cantidad']);
+    $resultados = registrarCompras($_POST['idProducto'],$_POST['nombre'],$_POST['preciounitario'],$_POST['datos'],$_POST['Cantidad']);
 
     if($resultados > 0){
         $mensaje = 'Se registro la compra correctamente';
