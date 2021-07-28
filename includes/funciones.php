@@ -65,13 +65,31 @@ return $results;
     }
 }
 
+function getProductoById($id){
 
- function registrarCompras($id,$nombre,$precio,$datosEnArray,$Cantidad){
+    global $db;
+
+    //extraer data de producto
+
+    $results = $db->table("comprass")->select()
+        ->where("id = :id")
+        ->bind(array(
+            "id" => $id
+        ))->exec();
+    if(!empty($results)){
+        return $results;
+    } else {
+        return false;
+    }
+}
+
+
+ function registrarCompras($producto,$userId,$cantidad){
 
     global $db;
 
     //venta completa id, usuario, productos, total, fecha
- $results = $db->table("DetalleVenta")->insert("(`idProducto`,`nombre`,`preciounitario`,`datos`,`Cantidad`)") ->values("(:idProducto,:nombre,:preciounitario,:datos,:Cantidad)")
+    $results = $db->table("DetalleVenta")->insert("(`idProducto`,`nombre`,`preciounitario`,`datos`,`Cantidad`)") ->values("(:idProducto,:nombre,:preciounitario,:datos,:Cantidad)")
         ->bind(array( 
             "idProducto"  => $id,
             "nombre"  => $nombre,
@@ -175,6 +193,30 @@ function redirectTo($to=''){
     exit();
 }
 
+
+function agregarSesion($producto,$cantidad){
+    //
+
+    $_SESSION['carrito'][] = array(
+        'id' => $producto,
+        'cantidad' => $cantidad
+    );
+
+    /*
+    $_SESSION['carrito] = array(
+        array(
+            'idproducto' => 12,
+            'cantidad' => 2
+        ),
+        array(
+            'idproducto' => 20,
+            'cantidad' => 1
+        )
+    )
+    */
+
+
+}
 
 
 

@@ -70,3 +70,34 @@ if(isset($_POST['action']) &&  $_POST['action']=='registrarUsuario'){
     }
 
 }
+
+
+
+if(isset($_POST['action']) &&  $_POST['action']  =='agregar_producto_carrito'){
+
+    print_r($_POST);
+
+
+    $idProducto = $_POST['idProducto'];
+    $cantidad = $_POST['cantidad'];
+
+    if(intval($idProducto)) :
+
+        $producto = getProductoById($idProducto);
+
+        $resultados = agregarSesion(
+            $producto,
+            $_SESSION['id'], //Este es el id del usuario
+            $cantidad
+        );
+
+
+    endif;
+ 
+    if($resultados > 0 ){
+        $mensaje = 'Se elimino la compra correctamente';
+    } else{
+        $mensaje = 'Ocurrio un problema al eliminar la compra';
+    }
+
+}

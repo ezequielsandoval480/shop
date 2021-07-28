@@ -5,18 +5,8 @@ if(!estaLogueado()){
    redirectTo('?pagina=inicio');
 }
 
-$datosbase= getProductosbyMarca($_GET['id']);
+$datosbase = getProductosbyMarca($_GET['id']);
 
-foreach ($datosbase as $datos){ 
-$datos = array(
-  "nombre" => $datos['nombre'],
-  "descripcion" => $datos['descripcion'],
-  "precio" => $datos['precio'],
-);
-
-$datosplanos = json_encode($datos);
-echo $datosplanos;
-};
                                   
 include "parciales/header.php";
 ?>
@@ -38,16 +28,12 @@ include "parciales/header.php";
                                 <h3>Precio total</h3>
                                 <h3>Cantidad</h3>
                             </div>
-                                <form id="AgregaralCarrito" method="post">
-                                    <input type="hidden" name="idProducto" id="id" value="<?php echo $datosplanos['id'];?>">
-                                     <input type="hidden" name="nombre" id="nombre" "value="<?php echo $datosplanos['nombre'];?>">
-                                     <input type="hidden" name="preciounitario" id="precio" value="<?php echo $datosplanos['precio'];?>">
-                                     <input type="hidden" name="datos" id="datos" value="<?php echo $datosplanos;?>">
-                                    <input type="number" name="Cantidad" id="Cantidad" value="1">
-                                    <input type="hidden" name="fecha" id="fecha">
-                                     <input type="hidden" name="usuarioid" id="usuarioid" value="<?php echo $producto['precio'];?>">
-                                      <input type="hidden" name="action" href="?pagina=compras" value="registrarCompras">
+                                <form method="post">
+                                    <input type="hidden" name="idProducto" id="id" value="<?php echo $datos['id'];?>">
+                                    <input type="number" name="cantidad" id="Cantidad" value="1">
                                     <button type="submit" name="agregar" class="btn btn-primary">Agregar a carrito</button>
+
+                                    <input type="hidden" name="action" value="agregar_producto_carrito">
                                     
                                 </form>
                             </div>
